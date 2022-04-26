@@ -1,9 +1,8 @@
 import "./App.css";
-import Hero from "./components/Hero/Hero";
+import Hero from "./components/Hero";
 import DestinationList from "./components/Destinations/DestinationList";
-import FinalFindFalconeResult from './components/FindFalconeResult/FinalFindFalconeResult'
-import { useReducer, useState } from "react";
-
+import Result from "./components/Result";
+import { useReducer} from "react";
 
 const initialDestinations = [
   { id: 1, destinationName: "Destination 1" },
@@ -13,25 +12,38 @@ const initialDestinations = [
 ];
 
 const resultReducer = (state, action) => {
-  switch(action.type) {
-    case "FETCH_INIT": 
-      return {...state, isLoading:true, isError: false, isShow: true}
+  switch (action.type) {
+    case "FETCH_INIT":
+      return { ...state, isLoading: true, isError: false, isShow: true };
     case "FETCH_SUCCESS":
-      return {...state, data: action.payload, isLoading: false, isError: false, isShow: true}
+      return {
+        ...state,
+        data: action.payload,
+        isLoading: false,
+        isError: false,
+        isShow: true,
+      };
     case "FETCH_FAILURE":
-      return {...state, isLoading: false, isError: true, isShow: true}
+      return { ...state, isLoading: false, isError: true, isShow: true };
     default:
-      throw new Error("Not found")
+      throw new Error("Not found");
   }
-}
+};
 
-function App() {
-  const [result, dispatchResult] = useReducer(resultReducer, {data: {}, isLoading: true, isShow: false})
+function App({ onReset }) {
+  const [result, dispatchResult] = useReducer(resultReducer, {
+    data: {},
+    isLoading: true,
+    isShow: false,
+  });
   return (
     <div className="App">
-      <Hero />
-      <DestinationList destinations={initialDestinations} dispatchResult={dispatchResult}/>
-      {result.isShow && <FinalFindFalconeResult result={result} />}
+      <Hero onReset={onReset} />
+      <DestinationList
+        destinations={initialDestinations}
+        dispatchResult={dispatchResult}
+      />
+      {result.isShow && <Result result={result} onReset={onReset} />}
     </div>
   );
 }

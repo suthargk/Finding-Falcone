@@ -24,20 +24,20 @@ const DestinationItem = ({
   const handleOnSelect = (event) => {
     const selectedValue = event.target.value;
 
-    handleSetSelectedPlanet((s) => {
-      const selectedDestination = s[destination.id];
+    handleSetSelectedPlanet((prev) => {
+      const selectedDestination = prev[destination.id];
 
       if (!selectedValue) {
-        delete s[destination.id];
+        delete prev[destination.id];
 
         return {
-          ...s,
+          ...prev,
         };
       }
 
       if (selectedDestination) {
         return {
-          ...s,
+          ...prev,
           [destination.id]: {
             ...selectedDestination,
             value: selectedValue,
@@ -47,7 +47,7 @@ const DestinationItem = ({
       }
 
       return {
-        ...s,
+        ...prev,
         [destination.id]: {
           value: selectedValue,
           destinationId: destination.id,

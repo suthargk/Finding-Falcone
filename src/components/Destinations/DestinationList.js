@@ -97,6 +97,8 @@ const DestinationList = ({ destinations, dispatchResult }) => {
       });
   };
 
+  const enabledButton = doesAllPlanetHaveVehicle(selectedPlanetsMap)
+  console.log(enabledButton)
   return (
     <div className="game">
       <div className="destinations_list">
@@ -114,9 +116,7 @@ const DestinationList = ({ destinations, dispatchResult }) => {
           />
         ))}
       </div>
-      {doesAllPlanetHaveVehicle(selectedPlanetsMap) && (
-        <button className="find-falcone-button" onClick={handleOnFind}>Find It</button>
-      )}
+      <div className="find-falcone-button-container"><button className="find-falcone-button" onClick={handleOnFind} disabled={doesAllPlanetHaveVehicle(selectedPlanetsMap) === true ? false : true}>Find It</button></div>
     </div>
   );
 };

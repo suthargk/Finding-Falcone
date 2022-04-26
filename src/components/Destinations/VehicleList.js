@@ -15,11 +15,11 @@ const VehicleList = ({
   vehicles
 }) => {
   const handleOnVehicleSelect = (selectedVehicle) => {
-    setAllVehiclesByNoOfTimeUsed((s) => {
+    setAllVehiclesByNoOfTimeUsed((prev) => {
       const selectedVehicleId = selectedVehicle.id;
       const prevSelectedVehicle = selectedPlanetsMap[destinationId]?.vehicle;
 
-      let updatedVehicle = { ...s };
+      let updatedVehicle = { ...prev };
 
       if (prevSelectedVehicle?.id) {
         console.log("Remove");
