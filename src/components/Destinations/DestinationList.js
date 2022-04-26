@@ -97,8 +97,6 @@ const DestinationList = ({ destinations, dispatchResult }) => {
       });
   };
 
-  const enabledButton = doesAllPlanetHaveVehicle(selectedPlanetsMap)
-  console.log(enabledButton)
   return (
     <div className="game">
       <div className="destinations_list">
