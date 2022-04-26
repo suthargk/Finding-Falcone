@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import DropDown from "./DropDown";
 import VehicleList from "./VehicleList";
 import { removeAllSelectedOptions } from "../../utils";
