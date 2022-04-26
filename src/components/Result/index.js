@@ -2,14 +2,14 @@ import React, { useRef } from "react";
 
 const Result = ({ result, onReset }) => {
   const backgroundRef = useRef(null);
-  document.body.style.overflowY = "hidden";
+  document.body.style.position = "fixed";
   return (
     <div className="final-falcone-result-background" ref={backgroundRef}>
       <div className="final-falcone-result-modal">
         <svg
           onClick={() => {
             backgroundRef.current.style.display = "none";
-            document.body.style.overflowY = "scroll";
+            document.body.style.position = "relative";
             onReset();
           }}
           fill="none"
