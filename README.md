@@ -2,7 +2,7 @@
 
  App Link: https://finding-falcone-react-app.netlify.app/
 
-### Start App
+### Start App in developement
 
 1) npm i
 2) npm start
