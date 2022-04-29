@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 
 const Result = ({ result, onReset }) => {
   const backgroundRef = useRef(null);
-  document.body.style.position = "fixed";
   return (
     <div className="final-falcone-result-background" ref={backgroundRef}>
       <div className="final-falcone-result-modal">
